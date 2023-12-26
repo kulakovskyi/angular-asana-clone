@@ -8,20 +8,20 @@
     <div class="form-group">
       <div class="edit-card__form-des">Tags</div>
       <div>
-<!--        <mat-chip-list #tags formControlName="tags">-->
-<!--          <mat-chip *ngFor="let tag of this.formGroup.get('tags')?.value"-->
-<!--                    [style.background-color]="tag.color ? tag.color : '#e0e0e0'"-->
-<!--                    (removed)="removeTag(tag)">-->
-<!--            {{tag.name}}-->
-<!--            <mat-icon (click)="openColorPickerDialog(tag)"-->
-<!--                      class="mat-icon notranslate mat-chip-remove mat-chip-trailing-icon material-icons mat-icon-no-color">-->
-<!--              color_lense-->
-<!--            </mat-icon>-->
-<!--            <mat-icon matChipRemove>cancel</mat-icon> -->
-<!--          </mat-chip>-->
-<!--          <input class="edit-card__form-input-tags" placeholder="Add tags" [matChipInputFor]="tags"-->
-<!--                 (matChipInputTokenEnd)="addTag($event)"/>-->
-<!--        </mat-chip-list>-->
+        <mat-chip-list #tags formControlName="tags">
+          <mat-chip *ngFor="let tag of this.formGroup.get('tags')?.value"
+                    [style.background-color]="tag.color ? tag.color : '#e0e0e0'"
+                    (removed)="removeTag(tag)">
+            {{tag.name}}
+            <mat-icon (click)="openColorPickerDialog(tag)"
+                      class="mat-icon notranslate mat-chip-remove mat-chip-trailing-icon material-icons mat-icon-no-color">
+              color_lense
+            </mat-icon>
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+          <input class="edit-card__form-input-tags" placeholder="Add tags" [matChipInputFor]="tags"
+                 (matChipInputTokenEnd)="addTag($event)"/>
+        </mat-chip-list>
       </div>
     </div>
     <div class="form-group">

@@ -1,0 +1,33 @@
+.delete-card{
+  font-family: Segoe UI, sans-serif;
+  padding: 40px 25px;
+  border: 1px solid #424244;
+  background: #1E1F21;
+  &__title{
+    display: block;
+    background: transparent;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+    color: #F5F4F3;
+    margin: 0 0 40px ;
+  }
+
+  &__btns{
+    display: flex;
+    gap: 15px;
+  }
+  &__btn{
+    border: 1px solid #424244;
+    background: #1E1F21;
+    padding: 8px 20px;
+    color: #F5F4F3;
+    border-radius: 6px;
+    transition: background-color .3s ease;
+    &:hover{
+      background: #37383d;
+    }
+  }
+
+}

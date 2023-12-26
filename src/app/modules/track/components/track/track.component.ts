@@ -6,6 +6,7 @@ import {TaskService} from "../../../../shared/services/task.service";
 import {ActivatedRoute} from "@angular/router";
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 import {EditCardComponent} from "../../../edit-card/components/edit-card/edit-card.component";
+import {DeleteCardComponent} from "../../../delete-card/components/delete-card/delete-card.component";
 
 @Component({
   selector: 'app-track',
@@ -60,14 +61,14 @@ export class TrackComponent {
   }
 
   deleteTalk(talk: Talks, track: TracksInterface) {
-    // this._dialog.open(DeleteCardComponent, {data: talk, width: '500px'})
-    //   .afterClosed()
-    //   .subscribe(response => {
-    //     if (response) {
-    //       track.talks.splice(track.talks.indexOf(talk), 1);
-    //       this.updateBoardWithData()
-    //     }
-    //   });
+    this._dialog.open(DeleteCardComponent, {data: talk, width: '500px'})
+      .afterClosed()
+      .subscribe(response => {
+        if (response) {
+          track.talks.splice(track.talks.indexOf(talk), 1);
+          this.updateBoardWithData() 
+        }
+      });
 
   }
 

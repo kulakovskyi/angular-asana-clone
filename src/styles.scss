@@ -12,5 +12,7 @@ html, body {
   height: 100%;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.cdk-global-overlay-wrapper{
+  overflow-y: scroll !important;
+  padding: 30px 0 !important;
+}

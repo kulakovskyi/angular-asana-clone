@@ -12,6 +12,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
 import {EditCardModule} from "./modules/edit-card/edit-card.module";
 import {ColorPickerModule} from "./modules/color-picker/color-picker.module";
+import {DeleteCardModule} from "./modules/delete-card/delete-card.module";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {ColorPickerModule} from "./modules/color-picker/color-picker.module";
     MatIconModule,
     MatDialogModule,
     EditCardModule,
-    ColorPickerModule
+    ColorPickerModule,
+    DeleteCardModule
 
   ],
   providers: [],

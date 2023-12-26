@@ -35,10 +35,10 @@ export class EditCardComponent implements OnInit{
       speaker: new FormControl(talk && talk.speaker ? talk.speaker : '', [
         Validators.required
       ]),
-      //image: new FormControl(talk && talk.image ? talk.image : ''),
-      //tags: new FormControl(talk && talk.tags ? talk.tags : []),
-      //issueType: new FormControl(talk && talk.issueType ? talk.issueType : ''),
-      //createdAt: new FormControl(talk && talk.createdAt ? talk.createdAt : new Date()),
+      image: new FormControl(talk && talk.image ? talk.image : ''),
+      tags: new FormControl(talk && talk.tags ? talk.tags : []),
+      issueType: new FormControl(talk && talk.issueType ? talk.issueType : ''),
+      createdAt: new FormControl(talk && talk.createdAt ? talk.createdAt : new Date()),
       description: new FormControl(talk && talk.description ? talk.description : new Date())
     })
   }
