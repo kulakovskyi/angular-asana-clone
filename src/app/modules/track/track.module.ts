@@ -3,7 +3,7 @@ import {CommonModule} from "@angular/common";
 import { TrackComponent } from './components/track/track.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
-import {CdkDropList} from "@angular/cdk/drag-drop";
+import {CdkDrag, CdkDropList} from "@angular/cdk/drag-drop";
 import {CardModule} from "../card/card.module";
 
 @NgModule({
@@ -12,7 +12,8 @@ import {CardModule} from "../card/card.module";
     MatMenuModule,
     MatIconModule,
     CdkDropList,
-    CardModule
+    CardModule,
+    CdkDrag
   ],
   exports: [
     TrackComponent

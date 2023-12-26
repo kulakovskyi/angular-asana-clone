@@ -1,0 +1,79 @@
+$dialog-default-padding: 24px;
+$edit-talk-dialog-width: 700px;
+
+img {
+  width: $edit-talk-dialog-width;
+  margin: (-$dialog-default-padding) (-$dialog-default-padding) 0px;
+  padding-bottom: 8px;
+}
+
+.mat-form-field {
+  display: block;
+}
+
+.mat-button {
+  text-transform: uppercase;
+}
+
+.edit-card{
+  font-family: Segoe UI, sans-serif;
+  padding: 40px 25px;
+  border: 1px solid #424244;
+  background: #1E1F21;
+  &__form{
+    display: flex;
+    flex-direction: column;
+    .form-group{
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      margin: 0 0 25px;
+    }
+    &-title{
+      display: block;
+      background: transparent;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 32px;
+      color: #F5F4F3;
+      margin: 0 0 40px ;
+    }
+    &-des{
+      color: #A2A0A2;
+    }
+    &-btns{
+      display: flex;
+      gap: 15px;
+    }
+    &-btn{
+      border: 1px solid #424244;
+      background: #1E1F21;
+      padding: 8px 20px;
+      color: #F5F4F3;
+      border-radius: 6px;
+      transition: background-color .3s ease;
+      &:hover{
+        background: #37383d;
+      }
+    }
+    &-input{
+      display: block;
+      background: transparent;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 18px;
+      color: #F5F4F3;
+      &-tags{
+        display: block;
+        background: transparent;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 18px;
+        color: #F5F4F3;
+      }
+    }
+  }
+}

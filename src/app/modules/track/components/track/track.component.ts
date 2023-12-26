@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {TaskService} from "../../../../shared/services/task.service";
 import {ActivatedRoute} from "@angular/router";
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
+import {EditCardComponent} from "../../../edit-card/components/edit-card/edit-card.component";
 
 @Component({
   selector: 'app-track',
@@ -47,15 +48,15 @@ export class TrackComponent {
 
   //Edit card
   addEditTalk(talk: Talks | '', track: TracksInterface, edit = false) {
-    // this._dialog.open(EditCardComponent, {data: {talk, edit}, width: '700px'})
-    //   .afterClosed()
-    //   .subscribe(newTalkData => {
-    //     if(!newTalkData){
-    //       return
-    //     }
-    //     edit ? Object.assign(talk, newTalkData) : track.talks.unshift(newTalkData);
-    //     this.updateBoardWithData()
-    //   })
+    this._dialog.open(EditCardComponent, {data: {talk, edit}, width: '700px'})
+      .afterClosed()
+      .subscribe(newTalkData => {
+        if(!newTalkData){
+          return
+        }
+        edit ? Object.assign(talk, newTalkData) : track.talks.unshift(newTalkData);
+        this.updateBoardWithData()
+      })
   }
 
   deleteTalk(talk: Talks, track: TracksInterface) {
