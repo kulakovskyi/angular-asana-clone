@@ -4,6 +4,17 @@ export interface User {
   returnSecureToken?: boolean
 }
 
+export interface UserResponseInterface{
+  kind: string,
+  localI: string,
+  email: string,
+  displayName: string,
+  idToken: string,
+  registered: boolean,
+  refreshToken: string,
+  expiresIn: string
+}
+
 export interface FbAuthResponse {
   idToken: string
   expiresIn: string

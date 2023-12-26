@@ -3,6 +3,7 @@ import {CommonModule} from "@angular/common";
 import { LoginComponent } from './components/login/login.component';
 import {RouterModule} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
+import {AuthService} from "../../pages/auth/servrices/auth.service";
 
 @NgModule({
   imports: [
@@ -14,6 +15,9 @@ import {ReactiveFormsModule} from "@angular/forms";
   ],
   declarations: [
     LoginComponent
+  ],
+  providers:[
+    AuthService
   ]
 })
 

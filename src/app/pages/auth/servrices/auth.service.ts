@@ -22,13 +22,22 @@ export class AuthService{
   }
 
   login(user: User): Observable<any> {
-    user.returnSecureToken = true
-    return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`, user)
+    const userWithToken = { ...user, returnSecureToken: true };
+    return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`, userWithToken)
       .pipe(
         tap(this.setToken),
         catchError(this.handleError.bind(this))
       )
   }
+
+  getCurrentUser(): string | null{
+    if(localStorage.getItem('userEmail')){
+      return localStorage.getItem('userEmail')
+    } else {
+      return null
+    }
+  }
+
 
   logOut() {
     this.setToken(null)

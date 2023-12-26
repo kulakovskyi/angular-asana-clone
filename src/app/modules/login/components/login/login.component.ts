@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
-import {AuthService} from "../../../../pages/auth/servrices/auth.service";
-import {Router} from "@angular/router";
+import {select, Store} from "@ngrx/store";
+import {isSubmittedSelector} from "../../../../shared/store/selectors";
+import {loginAction} from "../../../../shared/store/actions/login.action";
 
 @Component({
   selector: 'app-login',
@@ -13,16 +14,15 @@ export class LoginComponent implements OnInit{
 
   form!: FormGroup
   submitted = false
-  response$!: Observable<any>;
-  error$!: Observable<any>;
+  isSubmitting$!: Observable<boolean>
 
 
-  constructor(private auth : AuthService,
-              private router: Router) {
+  constructor(private store: Store) {
 
   }
 
   ngOnInit() {
+    this.initialValue()
     this.initialForm()
   }
 
@@ -39,16 +39,13 @@ export class LoginComponent implements OnInit{
     })
   }
 
-
-  login() {
-    if(this.form.invalid){
-      return
-    }
-    //const userLogin: UserLoginInterface = {...this.form.value}
-
-    //this.store.dispatch(login({ userLogin }))
-
+  initialValue(){
+    this.isSubmitting$ = this.store.pipe(select(isSubmittedSelector))
   }
 
 
+  login() {
+    if(this.form.invalid) return
+    this.store.dispatch(loginAction({request: this.form.value}))
+  }
 }
