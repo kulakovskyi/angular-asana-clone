@@ -32,7 +32,7 @@ import {DeleteCardModule} from "./modules/delete-card/delete-card.module";
     MatDialogModule,
     EditCardModule,
     ColorPickerModule,
-    DeleteCardModule
+    DeleteCardModule,
 
   ],
   providers: [],

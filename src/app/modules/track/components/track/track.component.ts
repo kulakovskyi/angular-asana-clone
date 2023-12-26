@@ -66,7 +66,7 @@ export class TrackComponent {
       .subscribe(response => {
         if (response) {
           track.talks.splice(track.talks.indexOf(talk), 1);
-          this.updateBoardWithData() 
+          this.updateBoardWithData()
         }
       });
 
