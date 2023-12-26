@@ -20,7 +20,7 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {EffectsModule} from "@ngrx/effects";
 import {reducers} from "./shared/store/reducer";
 import {LoginEffect} from "./shared/store/effects/login.effect";
-import {AngularFireModule} from "@angular/fire/compat";
+
 import {environment} from "../environment/environment";
 
 export const AppReducers: ActionReducerMap<any> = {
@@ -47,7 +47,6 @@ export const AppReducers: ActionReducerMap<any> = {
     EditCardModule,
     ColorPickerModule,
     DeleteCardModule,
-    AngularFireModule.initializeApp(environment),
     StoreModule.forRoot(AppReducers),
     EffectsModule.forRoot([LoginEffect]),
     StoreDevtoolsModule.instrument({
