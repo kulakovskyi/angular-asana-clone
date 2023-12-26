@@ -1,0 +1,20 @@
+<div class="card">
+
+  <div class="card__content">
+    <div class="card__title">{{text}}</div>
+    <div class="card__tags" *ngIf="tags">
+      <div class="card__tags-item" *ngFor="let tag of tags"
+           [style.background-color]="tag.color ? tag.color : '#6D6E6F'"
+      >{{tag.name}}</div>
+    </div>
+    <div class="card__info">
+      <div class="card__info-author" *ngIf="author"><img  src="assets/images/user-test.svg" alt="test">{{author}}</div>
+      <div class="card__info-date">{{createdAt | date}}</div>
+    </div>
+
+
+    <mat-icon (click)="delete.next()" class="icon">cancel_outline</mat-icon>
+    <button class="card__btn" (click)="edit.next()"></button>
+
+  </div>
+</div>

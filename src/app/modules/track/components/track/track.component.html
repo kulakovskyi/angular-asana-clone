@@ -1,0 +1,53 @@
+<div class="track">
+  <div class="track__row">
+    <div [textContent]="track.title" class="track__title"></div>
+    <div class="track__sort">
+      <button class="track__sort-btn"
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu">
+        <img src="/assets/images/options.svg" alt="icon">
+      </button>
+      <mat-menu #menu="matMenu" class="track__sort-menu">
+        <div class="track__sort-menu-wrap">
+          <button class="track__sort-menu-btn"
+                  (click)="filterByDate(track.talks, -1)">
+            <mat-icon class="track__sort-menu-icon">arrow_downward</mat-icon>
+            <span>Sort By(Date)</span>
+          </button>
+          <button class="track__sort-menu-btn"
+                  (click)="filterByDate(track.talks, 1)">
+            <mat-icon class="track__sort-menu-icon">arrow_upward</mat-icon>
+            <span>Sort By(Date)</span>
+          </button>
+        </div>
+      </mat-menu>
+    </div>
+  </div>
+
+  <div class="track-content" cdkDropList
+       [id]="track.id"
+       [cdkDropListData]="track.talks"
+       (cdkDropListDropped)="onTalkDrop($event)"
+       [cdkDropListConnectedTo]="trackIds()">
+
+    <app-card cdkDrag
+              *ngFor="let talk of track.talks; let idx = index"
+              [text]="talk.text || ''"
+              [createdAt]="talk.createdAt"
+              [tags]="talk.tags"
+              [issueType]="talk.issueType"
+              [author]="talk.speaker"
+              [image]="talk.image"
+              (edit)="addEditTalk(talk, track, true)"
+              (delete)="deleteTalk(talk, track)"
+    ></app-card>
+
+  </div>
+
+  <div class="btn-talk-btn-container">
+    <button style="width: fit-content;" class="add-talk-btn" (click)="addEditTalk('', track)" color="primary"
+    > <img src="assets/images/plus.svg"> Add task
+    </button>
+    <!--  <span fxFlex style="text-align: right; cursor: pointer;" (click)="track['collapsed'] = !track['collapsed']">Click to {{ track['collapsed'] ? 'expand' : 'collapse'}}</span>-->
+  </div>
+</div>
