@@ -27,6 +27,7 @@ export class BoardLayoutComponent implements OnInit{
     );
   }
 
+
   onTrackDrop(event: CdkDragDrop<TracksInterface[]>) {
     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
   }

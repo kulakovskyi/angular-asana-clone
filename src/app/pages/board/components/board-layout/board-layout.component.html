@@ -1,4 +1,4 @@
-<ng-container *ngIf="board$ | async as board; else loading">
+<ng-container *ngIf="board$ | async as board">
   <div
     cdkDropList
     [cdkDropListData]="board.tracks"
@@ -15,6 +15,4 @@
 </ng-container>
 
 
-<ng-template #loading>
-  Loading...
-</ng-template>
+

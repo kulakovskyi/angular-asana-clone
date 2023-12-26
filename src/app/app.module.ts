@@ -22,6 +22,7 @@ import {reducers} from "./shared/store/reducer";
 import {LoginEffect} from "./shared/store/effects/login.effect";
 
 import {environment} from "../environment/environment";
+import {LoaderModule} from "./shared/modules/loader/loader.module";
 
 export const AppReducers: ActionReducerMap<any> = {
   'auth': reducers
@@ -53,6 +54,7 @@ export const AppReducers: ActionReducerMap<any> = {
       maxAge: 25,
       logOnly: true,
     }),
+    LoaderModule,
 
   ],
   providers: [

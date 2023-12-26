@@ -4,17 +4,19 @@ import { BoardLayoutComponent } from './components/board-layout/board-layout.com
 import {RouterModule} from "@angular/router";
 import {CdkDrag, CdkDropList} from "@angular/cdk/drag-drop";
 import {TrackModule} from "../../modules/track/track.module";
+import {LoaderModule} from "../../shared/modules/loader/loader.module";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild([
-      {path: 'board/:id', component: BoardLayoutComponent}
-    ]),
-    CdkDropList,
-    CdkDrag,
-    TrackModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild([
+            {path: 'board/:id', component: BoardLayoutComponent}
+        ]),
+        CdkDropList,
+        CdkDrag,
+        TrackModule,
+        LoaderModule
+    ],
   declarations: [
     BoardLayoutComponent
   ]

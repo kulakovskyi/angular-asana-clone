@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {map, Observable, Subscription} from "rxjs";
 import {ProjectsInterface} from "../../../../types/project.interface";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
-import {Data} from "../../../../../data/data";
 import {TaskService} from "../../../../services/task.service";
 import {GetCurrentUserService} from "../../../../../pages/auth/servrices/get-current-user.service";
 import {select, Store} from "@ngrx/store";
