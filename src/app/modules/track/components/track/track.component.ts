@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, SimpleChanges} from '@angular/core';
+import { Component, Input, OnDestroy} from '@angular/core';
 import {Talks, TracksInterface} from "../../../../shared/types/track.interface";
 import {BoardInterface} from "../../../../shared/types/board.interface";
 import {MatDialog} from "@angular/material/dialog";
@@ -7,7 +7,7 @@ import {ActivatedRoute} from "@angular/router";
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 import {EditCardComponent} from "../../../edit-card/components/edit-card/edit-card.component";
 import {DeleteCardComponent} from "../../../delete-card/components/delete-card/delete-card.component";
-import {EMPTY, Subject, Subscription, switchMap, take, takeUntil} from "rxjs";
+import {EMPTY, Subject, switchMap, take} from "rxjs";
 
 @Component({
   selector: 'app-track',
@@ -18,8 +18,6 @@ export class TrackComponent implements OnDestroy {
   @Input() track!: TracksInterface
   @Input() board!: BoardInterface
   @Input() boardIndex!: number
-  tSub$!: Subscription
-  rSub$!: Subscription
   private destroy$ = new Subject<void>();
 
   constructor(private _dialog: MatDialog,
@@ -30,7 +28,6 @@ export class TrackComponent implements OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
-    if (this.tSub$) this.tSub$.unsubscribe()
   }
 
 
@@ -46,8 +43,6 @@ export class TrackComponent implements OnDestroy {
   onTalkDrop(event: CdkDragDrop<Talks[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-
-
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,

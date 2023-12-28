@@ -1,0 +1,48 @@
+.alert-wrap{
+  position: fixed;
+  z-index: 500;
+  top: 40px;
+  right: 50px;
+  max-width: 300px;
+  border-radius: 5px;
+  p{
+    margin: 0 !important;
+  }
+}
+
+.alert {
+  padding: 0.7rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  background: white;
+  color: #333;
+}
+
+.alert-light {
+  background: purple;
+  color: #333;
+}
+
+
+.alert-dark {
+  background: yellow;
+  color: #fff;
+}
+
+
+.alert-danger {
+  background: red;
+  color: #fff;
+}
+
+.alert-success {
+  background: green;
+  color: #fff;
+}
+
+
+.alert-white {
+  background: #fff;
+  color: #333;
+  border: #ccc solid 1px;
+}
