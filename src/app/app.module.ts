@@ -23,6 +23,7 @@ import {LoginEffect} from "./shared/store/effects/login.effect";
 
 import {environment} from "../environment/environment";
 import {LoaderModule} from "./shared/modules/loader/loader.module";
+import {AlertModule} from "./shared/modules/alert/alert.module";
 
 export const AppReducers: ActionReducerMap<any> = {
   'auth': reducers
@@ -55,6 +56,7 @@ export const AppReducers: ActionReducerMap<any> = {
       logOnly: true,
     }),
     LoaderModule,
+    AlertModule,
 
   ],
   providers: [

@@ -8,7 +8,9 @@ export interface Alert{
   text: string
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 
 export class AlertService {
 

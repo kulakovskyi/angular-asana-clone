@@ -10,7 +10,10 @@ import {AlertService} from "./services/alert.service";
   declarations: [
     AlertComponent
   ],
-  providers:[
+  exports: [
+    AlertComponent
+  ],
+  providers: [
     AlertService
   ]
 })
