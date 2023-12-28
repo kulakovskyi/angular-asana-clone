@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/asana-clone-angular",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

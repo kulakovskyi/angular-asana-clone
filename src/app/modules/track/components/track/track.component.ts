@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, SimpleChanges} from '@angular/core';
 import {Talks, TracksInterface} from "../../../../shared/types/track.interface";
 import {BoardInterface} from "../../../../shared/types/board.interface";
 import {MatDialog} from "@angular/material/dialog";
@@ -7,20 +7,31 @@ import {ActivatedRoute} from "@angular/router";
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 import {EditCardComponent} from "../../../edit-card/components/edit-card/edit-card.component";
 import {DeleteCardComponent} from "../../../delete-card/components/delete-card/delete-card.component";
+import {EMPTY, Subject, Subscription, switchMap, take, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-track',
   templateUrl: './track.component.html',
-  styleUrls: ['./track.component.scss']
+  styleUrls: ['./track.component.scss'],
 })
-export class TrackComponent {
+export class TrackComponent implements OnDestroy {
   @Input() track!: TracksInterface
   @Input() board!: BoardInterface
   @Input() boardIndex!: number
+  tSub$!: Subscription
+  rSub$!: Subscription
+  private destroy$ = new Subject<void>();
 
   constructor(private _dialog: MatDialog,
               private taskService: TaskService,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute) {
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+    if (this.tSub$) this.tSub$.unsubscribe()
+  }
 
 
   filterByDate(talks: any, asc = 1) {
@@ -52,7 +63,7 @@ export class TrackComponent {
     this._dialog.open(EditCardComponent, {data: {talk, edit}, width: '700px'})
       .afterClosed()
       .subscribe(newTalkData => {
-        if(!newTalkData){
+        if (!newTalkData) {
           return
         }
         edit ? Object.assign(talk, newTalkData) : track.talks.unshift(newTalkData);
@@ -73,10 +84,19 @@ export class TrackComponent {
   }
 
   //update drag back
+
   updateBoardWithData() {
-    this.route.params.subscribe(params => {
-      const id = params['id'];
-      this.taskService.updateBoard(this.board, id).subscribe();
+    this.route.params.pipe(
+      take(1),
+      switchMap(params => {
+        const id = params['id'];
+        if (this.board && id) {
+          return this.taskService.updateBoard(this.board, id);
+        }
+        return EMPTY;
+      })
+    ).subscribe(() => {
+      console.log('Board success updated');
     });
   }
 

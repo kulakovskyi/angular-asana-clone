@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {BoardInterface} from "../../../../shared/types/board.interface";
 import {map, Observable, switchMap} from "rxjs";
 import {TaskService} from "../../../../shared/services/task.service";
@@ -9,7 +9,8 @@ import {TracksInterface} from "../../../../shared/types/track.interface";
 @Component({
   selector: 'app-board-layout',
   templateUrl: './board-layout.component.html',
-  styleUrls: ['./board-layout.component.scss']
+  styleUrls: ['./board-layout.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BoardLayoutComponent implements OnInit{
   board$!: Observable<BoardInterface>
